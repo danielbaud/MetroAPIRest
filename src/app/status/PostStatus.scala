@@ -4,8 +4,7 @@ import javax.inject._
 import play.api._
 import play.api.mvc._
 import play.api.libs.json.Json
-
-case class MetroStatus(position: Int, direction: Boolean, passengers: Int, battery: Int, speed: Int, temperature: Int, id: Int)
+import statusHistory._
 
 class PostStatus @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
@@ -18,7 +17,8 @@ class PostStatus @Inject()(cc: ControllerComponents) extends AbstractController(
                                 json.get("speed").as[Int],
                                 json.get("temperature").as[Int],
                                 json.get("id").as[Int])
-        Ok("Got request [" + status + "]")
+        History.add(status)
+        Ok("Got request [" + History.history + "]")
     }
 
 }
