@@ -18,7 +18,7 @@ class PostStatus @Inject()(cc: ControllerComponents) extends AbstractController(
                                 json.get("temperature").as[Int],
                                 json.get("id").as[Int])
         History.add(status)
-        Ok("Got request [" + History.history + "]")
+        Ok("Success")
     }
 
 }
