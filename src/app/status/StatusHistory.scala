@@ -1,4 +1,4 @@
-package statusHistory
+package status
 
 import play.api.libs.json._
 
@@ -26,7 +26,6 @@ object MetroStatus {
 }
 
 object History {
-
     var history: List[MetroStatus] = List()
 
     def add(status: MetroStatus): Unit = {

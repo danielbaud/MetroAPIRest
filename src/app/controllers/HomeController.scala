@@ -1,5 +1,6 @@
 package controllers
 
+import status._
 import javax.inject._
 import play.api._
 import play.api.mvc._
@@ -11,8 +12,12 @@ import play.api.mvc._
 @Singleton
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
-    def index() = Action { implicit request: Request[AnyContent] =>
-        Ok(views.html.index())
+    def index(id: Option[Int]) = Action { implicit request: Request[AnyContent] =>
+        val history: List[MetroStatus] = History.history
+        id match {
+            case Some(id) => Ok(views.html.index(history.filter(status => status.id == id)))
+            case None => Ok(views.html.index(history))
+        }
     }
 
 }

@@ -4,7 +4,6 @@ import javax.inject._
 import play.api._
 import play.api.mvc._
 import play.api.libs.json.Json
-import statusHistory._
 
 class PostStatus @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
