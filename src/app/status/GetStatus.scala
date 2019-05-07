@@ -8,9 +8,11 @@ import statusHistory._
 
 class GetStatus @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
-    def getStatus = Action { implicit request =>
-        val json = Json.toJson(History.history)
-        Ok(json)
+    def getStatus(id: Option[Int]) = Action { implicit request =>
+        id match {
+            case Some(id) => Ok(Json.toJson(History.history.filter(status => status.id == id)))
+            case None => Ok(Json.toJson(History.history))
+        }
     }
 
 }
