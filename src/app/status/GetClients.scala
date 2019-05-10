@@ -18,14 +18,26 @@ import scala.concurrent.ExecutionContext
 
 class GetClients @Inject()(cc: ControllerComponents, ws: WSClient) extends AbstractController(cc) {
 
-    def getClients = Action { implicit request =>
-        val source = Source.fromFile("../other/clients.json")
-        for (line <- source.getLines()) {
-          var data = Json.parse(line)
-          ws.url("http://localhost:9000/status").post(data)
+    def getClients(file: String) = Action { implicit request =>
+        file match {
+            case "" => {
+                val r = scala.util.Random
+                val ids: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+                val status: List[MetroStatus] = ids.map(x => MetroStatus(r.nextInt(100), r.nextInt(2) == 1, r.nextInt(300), r.nextInt(100), r.nextInt(50), r.nextInt(40), x))
+                print(status)
+                status.map(x => ws.url("http://localhost:9000/status").post(Json.toJson(x)))
+                Redirect("/")
+            }
+            case file => {
+                val source = Source.fromFile("../other/" + file)
+                for (line <- source.getLines()) {
+                  var data = Json.parse(line)
+                  ws.url("http://localhost:9000/status").post(data)
+                }
+                source.close()
+                Redirect("/")
+            }
         }
-        source.close()
-        Ok("Success")
     }
 
 }

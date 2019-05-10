@@ -12,4 +12,4 @@ GET   /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)
 # API Rest
 POST  /status			    status.PostStatus.postStatus
 GET   /status         status.GetStatus.getStatus(id: Option[Int])
-GET   /clients        status.GetClients.getClients
+GET   /clients        status.GetClients.getClients(file: String)
