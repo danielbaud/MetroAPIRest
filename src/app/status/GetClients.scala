@@ -15,6 +15,7 @@ import scala.concurrent.duration._
 import play.api.libs.ws._
 import play.api.http.HttpEntity
 import scala.concurrent.ExecutionContext
+import java.time.Instant
 
 class GetClients @Inject()(cc: ControllerComponents, ws: WSClient) extends AbstractController(cc) {
 
@@ -23,8 +24,10 @@ class GetClients @Inject()(cc: ControllerComponents, ws: WSClient) extends Abstr
             case "" => {
                 val r = scala.util.Random
                 val ids: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-                val status: List[MetroStatus] = ids.map(x => MetroStatus(r.nextInt(100), r.nextInt(2) == 1, r.nextInt(300), r.nextInt(100), r.nextInt(50), r.nextInt(40), x))
-                print(status)
+                val status: List[MetroStatus] = ids.map(x => MetroStatus(Instant.now().getEpochSecond(),
+                                                                        r.nextInt(100), r.nextInt(2) == 1,
+                                                                        r.nextInt(300), r.nextInt(100),
+                                                                        r.nextInt(50), r.nextInt(40), x))
                 status.map(x => ws.url("http://localhost:9000/status").post(Json.toJson(x)))
                 Redirect("/")
             }

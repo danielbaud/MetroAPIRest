@@ -24,23 +24,25 @@
         <table class="table table-striped table-dark">
           <thead>
             <tr>
-              <th style='text-align:center;vertical-align:middle'>Id</th>
+              <th style='text-align:center;vertical-align:middle'>Timestamp</th>
               <th style='text-align:center;vertical-align:middle'>Direction</th>
               <th style='text-align:center;vertical-align:middle'>Passengers</th>
               <th style='text-align:center;vertical-align:middle'>Battery</th>
               <th style='text-align:center;vertical-align:middle'>Speed</th>
               <th style='text-align:center;vertical-align:middle'>Temperature</th>
+              <th style='text-align:center;vertical-align:middle'>Métro ID</th>
             </tr>
           </thead>
           <tbody>
             @for(status <- history) {
               <tr>
-                <td style='text-align:center;vertical-align:middle'>@status.id</td>
+                <td style='text-align:center;vertical-align:middle'>@status.timestamp</td>
                 <td style='text-align:center;vertical-align:middle'>@status.direction</td>
                 <td style='text-align:center;vertical-align:middle'>@status.passengers</td>
                 <td style='text-align:center;vertical-align:middle'>@status.battery</td>
                 <td style='text-align:center;vertical-align:middle'>@status.speed</td>
                 <td style='text-align:center;vertical-align:middle'>@status.temperature</td>
+                <td style='text-align:center;vertical-align:middle'>@status.metro_id</td>
               </tr>
 		        }
           </tbody>

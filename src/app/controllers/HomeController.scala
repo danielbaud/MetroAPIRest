@@ -13,9 +13,9 @@ import play.api.mvc._
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
     def index(id: Option[Int]) = Action { implicit request: Request[AnyContent] =>
-        val history: List[MetroStatus] = History.history
+        val history: List[MetroStatus] = History.getHistory()
         id match {
-            case Some(id) => Ok(views.html.index(history.filter(status => status.id == id)))
+            case Some(id) => Ok(views.html.index(history.filter(status => status.metro_id == id)))
             case None => Ok(views.html.index(history))
         }
     }
