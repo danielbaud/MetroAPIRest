@@ -11,6 +11,7 @@ crossScalaVersions := Seq("2.12.6", "2.11.12")
 
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.1" % Test
+libraryDependencies += "org.apache.spark" %% "spark-core" % "2.4.3"
 libraryDependencies ++= Seq(
   ws
 )
