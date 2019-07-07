@@ -4,6 +4,7 @@ import status._
 import javax.inject._
 import play.api._
 import play.api.mvc._
+import org.apache.spark.rdd._
 
 /**
  * Description: Controller de la page d'acceuil.
@@ -13,10 +14,10 @@ import play.api.mvc._
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
     def index(id: Option[Int]) = Action { implicit request: Request[AnyContent] =>
-        val history: List[MetroStatus] = History.getHistory()
+        val history: RDD[MetroStatus] = History.getHistory()
         id match {
-            case Some(id) => Ok(views.html.index(history.filter(status => status.metro_id == id)))
-            case None => Ok(views.html.index(history))
+            case Some(id) => Ok(views.html.index(history.filter(status => status.metro_id == id).collect.toList))
+            case None => Ok(views.html.index(history.collect.toList))
         }
     }
 

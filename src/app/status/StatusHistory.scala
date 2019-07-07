@@ -38,8 +38,8 @@ object History {
     .set("spark.cassandra.connection.port", "9042")
   val sc = new SparkContext(conf)
 
-  def getHistory(): List[MetroStatus] = {
-    return sc.cassandraTable[MetroStatus]("imetro", "status").collect.toList
+  def getHistory(): RDD[MetroStatus] = {
+    return sc.cassandraTable[MetroStatus]("imetro", "status")
   }
 
   def add(status: MetroStatus): Unit = {
