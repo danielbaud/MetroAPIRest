@@ -16,6 +16,8 @@ class PostStatus @Inject()(cc: ControllerComponents) extends AbstractController(
                                 json.get("battery").as[Int],
                                 json.get("speed").as[Int],
                                 json.get("temperature").as[Int],
+                                json.get("failure").as[Boolean],
+                                json.get("line").as[Int],
                                 json.get("metro_id").as[Int])
         History.add(status)
         Ok("Success")

@@ -5,7 +5,8 @@ import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.rdd._
 import com.datastax.spark.connector._
 
-case class MetroStatus(timestamp: Long, position: Int, direction: Boolean, passengers: Int, battery: Int, speed: Int, temperature: Int, metro_id: Int)
+case class MetroStatus(timestamp: Long, position: Int, direction: Boolean, passengers: Int, battery: Int,
+                       speed: Int, temperature: Int, failure: Boolean, line: Int, metro_id: Int)
 
 object MetroStatus {
   implicit object MetroStatusFormat extends Format[MetroStatus] {
@@ -18,13 +19,15 @@ object MetroStatus {
         "battery" -> JsNumber(status.battery),
         "speed" -> JsNumber(status.speed),
         "temperature" -> JsNumber(status.temperature),
+        "failure" -> JsBoolean(status.failure),
+        "line" -> JsNumber(status.line),
         "metro_id" -> JsNumber(status.metro_id)
       )
       JsObject(statusSeq)
     }
 
     def reads(json: JsValue): JsResult[MetroStatus] = {
-        JsSuccess(MetroStatus(System.currentTimeMillis(), 0, true, 0, 0, 0, 0, 0))
+        JsSuccess(MetroStatus(System.currentTimeMillis(), 0, true, 0, 0, 0, 0, false, 1, 1))
     }
   }
 }
@@ -46,6 +49,6 @@ object History {
     val collection = sc.parallelize(Seq(status))
     collection.saveToCassandra("imetro", "status", SomeColumns("timestamp", "position", "direction",
                                                                 "passengers", "battery", "speed",
-                                                                "temperature", "metro_id"))
+                                                                "temperature", "failure", "line", "metro_id"))
   }
 }

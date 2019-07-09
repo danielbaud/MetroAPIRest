@@ -1,0 +1,27 @@
+@(metros: List[(Int, Int)])
+
+@main("Metros") {
+  @defining(play.core.PlayVersion.current) { version =>
+    <section id="content">
+      <div class="wrapper doc">
+        <div class="container">
+          @for((line_id, metro_count) <- metros) {
+            <div class="row mt-2">
+              <div class="col-3">
+              </div>
+              <div class="col-6">
+                <div class="card">
+                  <img class="card-img-top mt-5" src=@routes.Assets.versioned("images/ratp/M" + line_id  + "genRVB.svg") alt="Card image cap" height="100" width="100">
+                  <div class="card-body">
+                    <h5 class="card-title">Line @line_id</h5>
+                    <p class="card-text">This line has currently @metro_count metro(s) running.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  }
+}

@@ -27,7 +27,8 @@ class GetClients @Inject()(cc: ControllerComponents, ws: WSClient) extends Abstr
                 val status: List[MetroStatus] = ids.map(x => MetroStatus(Instant.now().getEpochSecond(),
                                                                         r.nextInt(100), r.nextInt(2) == 1,
                                                                         r.nextInt(300), r.nextInt(100),
-                                                                        r.nextInt(50), r.nextInt(40), x))
+                                                                        r.nextInt(50), r.nextInt(40),
+                                                                        r.nextInt(20) == 1, x, x * 100 + r.nextInt(99)))
                 status.map(x => ws.url("http://localhost:9000/status").post(Json.toJson(x)))
                 Redirect("/")
             }

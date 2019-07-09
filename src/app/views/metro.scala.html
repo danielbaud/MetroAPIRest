@@ -1,0 +1,27 @@
+@(metros: List[(Int, Int)])
+
+@main("Metros") {
+  @defining(play.core.PlayVersion.current) { version =>
+    <section id="content">
+      <div class="wrapper doc">
+        <div class="container">
+          @for((metro_id, count) <- metros) {
+            <div class="row mt-3">
+              <div class="col-3">
+              </div>
+              <div class="col-6">
+                <div class="card">
+                  <img class="card-img-top" src="http://www.francesoir.fr/sites/francesoir/files/images/Part-PAR-Par3510168-1-2-0_field_mise_en_avant_principale_1_0.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">iMetro @metro_id</h5>
+                    <p class="card-text">@count status available.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  }
+}
