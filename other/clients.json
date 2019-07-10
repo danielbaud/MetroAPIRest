@@ -1,12 +1,4 @@
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
-{"position": 42, "direction": true, "passengers": 222, "battery": 22, "speed": 180, "temperature": 24, "id": 1}
+{"timestamp": 0, "position": 50, "direction": true, "passengers": 190, "battery": 25, "speed": 47, "temperature": 25, "failure": false, "line": 1, "metro_id": 101}
+{"timestamp": 0, "position": 50, "direction": true, "passengers": 190, "battery": 25, "speed": 47, "temperature": 25, "failure": false, "line": 1, "metro_id": 101}
+{"timestamp": 0, "position": 50, "direction": true, "passengers": 190, "battery": 25, "speed": 47, "temperature": 25, "failure": false, "line": 1, "metro_id": 101}
+{"timestamp": 0, "position": 50, "direction": true, "passengers": 190, "battery": 25, "speed": 47, "temperature": 25, "failure": false, "line": 1, "metro_id": 101}
