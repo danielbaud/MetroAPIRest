@@ -7,33 +7,33 @@ and .filter.
 
 ## Installation
 
-Before running the project, you need to install SBT.
+**Before running the project, you need to install SBT.**
 
 ```bash
 sudo brew install sbt
 ```
-or
+*or*
 ```bash
 sudo apt-get install sbt
 ```
 
-You also need Java SDK 8.
+**You also need Java SDK 8.**
 
 ```bash
 brew tap adoptopenjdk/openjdk
 brew cask install adoptopenjdk8
 ```
-or
+*or*
 ```bash
 sudo apt-get install openjdk-8-jre
 ```
 
-And finaly cassandra database.
+**And finaly cassandra database.**
 
 ```bash
 brew install cassandra
 ```
-or
+*or*
 ```bash
 sudo apt-get install cassandra
 ```
